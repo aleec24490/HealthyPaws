@@ -26,17 +26,17 @@ jobs:
         with:
           dotnet-version: '6.0' # Change to your .NET version
 
-      # Restore dependencies
+      # Restore dependencies using the solution file
       - name: Restore dependencies
-        run: dotnet restore HealthyPawsV2/HealthyPawsV2.csproj
+        run: dotnet restore HealthyPawsV2.sln
 
-      # Build the application
+      # Build the application using the solution file
       - name: Build the app
-        run: dotnet build HealthyPawsV2/HealthyPawsV2.csproj --configuration Release
+        run: dotnet build HealthyPawsV2.sln --configuration Release
 
       # Publish the application to output directory
       - name: Publish the app
-        run: dotnet publish HealthyPawsV2/HealthyPawsV2.csproj --configuration Release --output ${{ github.workspace }}/publish
+        run: dotnet publish HealthyPawsV2.sln --configuration Release --output ${{ github.workspace }}/publish
 
       - name: Build And Deploy
         id: builddeploy
